@@ -54,7 +54,7 @@ If your router is not set up with the access to repository containing these pack
 
 ###### OpenWrt CC 15.05.1
 ```sh
-opkg update; opkg install wget libopenssl
+opkg update; opkg install wget libopenssl ca-certificates
 echo -e -n 'untrusted comment: public key 7ffc7517c4cc0c56\nRWR//HUXxMwMVnx7fESOKO7x8XoW4/dRidJPjt91hAAU2L59mYvHy0Fa\n' > /tmp/stangri-repo.pub && opkg-key add /tmp/stangri-repo.pub
 ! grep -q 'stangri_repo' /etc/opkg/customfeeds.conf && echo 'src/gz stangri_repo https://raw.githubusercontent.com/stangri/openwrt-repo/master' >> /etc/opkg/customfeeds.conf
 opkg update
