@@ -81,6 +81,7 @@ is_enabled() {
 }
 
 is_wg() { local proto; proto=$(uci -q get network.$1.proto); if [ "${proto:0:9}" == "wireguard" ]; then return 0; else return 1; fi; }
+is_oc() { local proto; proto=$(uci -q get network.$1.proto); if [ "${proto:0:11}" == "wireguard" ]; then return 0; else return 1; fi; }
 is_vpn() { local dev; dev=$(uci -q get network.$1.ifname); if [[ "${dev:0:3}" == "tun" || "${dev:0:3}" == "tap" ]]; then return 0; else return 1; fi; }
 is_tunnel() { if is_vpn "$1" || is_wg "$1"; then return 0; else return 1; fi; }
 is_wan() { if [[ -n "$wanIface4" && "$1" == "$wanIface4" ]]; then return 0; else return 1; fi; }
